@@ -11,3 +11,4 @@ for pointer in range(lst[1]):
         print("-1")
     else:
         print(" ".join(charDict[groupB]))
+        
