@@ -21,10 +21,6 @@ class Solution:
             for index2 in range(1,length2):
                 eachVerticalOrder += s[index2][index1]
 
-            spaceIndex = len(eachVerticalOrder) - 1
-
-            while eachVerticalOrder[spaceIndex] == " ":
-                spaceIndex -= 1
-            verticalOrder.append(eachVerticalOrder[:spaceIndex + 1])
+            verticalOrder.append(eachVerticalOrder.rstrip())
 
         return verticalOrder
