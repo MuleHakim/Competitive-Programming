@@ -3,8 +3,10 @@ class Solution:
 
         m = len(mat)
         n = len(mat[0])
+        if m*n != c*r:
+            return mat
+            
         reshaped = [[0]*c for _ in range(r)]
-        
         counter = 0
         for row in range(m):
             for col in range(n):
