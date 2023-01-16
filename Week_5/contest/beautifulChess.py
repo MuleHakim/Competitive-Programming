@@ -37,3 +37,7 @@ def beautifulChess(t):
                 ans = str(x + 1) + " " + str(y + 1)
                 break
         print(ans)
+
+if __name__ == '__main__':
+    testCase = int(input())
+    beautifulChess(testCase)
