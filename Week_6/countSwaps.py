@@ -29,4 +29,3 @@ if __name__ == '__main__':
     a = list(map(int, input().rstrip().split()))
 
     countSwaps(a)
-
