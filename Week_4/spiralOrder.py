@@ -1,41 +1,25 @@
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-
-        if not matrix:
-            return []
-
+        
+        row, col = 0, 0
         totalItems = len(matrix) * len(matrix[0])
-        output = []
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+        # set initial direction to the right
+        dx, dy = 0, 1
+        visited = set()
+        spiralOrder = []
+        count = 0
+        def onBoard(row, col):
+           return 0 <= row < len(matrix) and 0 <= col < len(matrix[0])
 
-        r1 = 0
-        c1 = 0
-        r2 = len(matrix) - 1
-        c2 = len(matrix[0]) - 1
+        while len(spiralOrder) != totalItems:
+            spiralOrder.append(matrix[row][col])
+            visited.add((row,col))
+            if not onBoard(row + dx, col + dy) or (row + dx, col + dy) in visited:
+                count +=1
+                dx, dy = directions[count % 4]
+            row += dx
+            col += dy
 
-        while len(output) < totalItems:
+        return spiralOrder
 
-            indexCol = c1
-            while indexCol <= c2 and len(output) < totalItems:
-                output.append(matrix[r1][indexCol])
-                indexCol += 1
-            indexRow = r1 + 1
-            while indexRow <= r2 - 1 and len(output) < totalItems:
-                output.append(matrix[indexRow][c2])
-                indexRow += 1
-            indexCol = c2
-            while indexCol >= c1 and len(output) < totalItems:
-                output.append(matrix[r2][indexCol])
-                indexCol -= 1
-                
-            indexRow = r2 - 1
-            while indexRow >= r1 + 1 and len(output) < totalItems:
-                output.append(matrix[indexRow][c1])
-                indexRow -= 1
-
-            r1 += 1
-            c1 += 1
-            r2 -= 1
-            c2 -= 1
-
-        return output
-    
