@@ -13,3 +13,4 @@ class Solution:
             right -= 1
             
         return sum_teams
+        
