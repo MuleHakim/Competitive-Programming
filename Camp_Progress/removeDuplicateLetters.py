@@ -2,11 +2,11 @@ class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
         stack = []
         seen = set()
-        last = {char: idx for idx, char in enumerate(s)}
+        my_dic = {char: idx for idx, char in enumerate(s)}
 
         for idx, char in enumerate(s):
             if char not in seen:
-                while stack and char < stack[-1] and idx < last[stack[-1]]:
+                while stack and char < stack[-1] and idx < my_dic[stack[-1]]:
                     seen.remove(stack.pop())
                 seen.add(char)
                 stack.append(char)
