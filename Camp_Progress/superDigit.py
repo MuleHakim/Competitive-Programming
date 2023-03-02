@@ -22,15 +22,6 @@ def superDigit(n, k):
             return n
         return superDigit(n * k, 1)
     return superDigit(supersum, k)
-    # if len(n) == k == 1:
-    #     return n
-    # def helper(p):
-    #     if len(p) == 1:
-    #         return p
-    #     supersum = str(sum([int(i) for i in p]))
-    #     return helper(supersum)
-    # p = n * k
-    # return helper(p)
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
