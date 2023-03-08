@@ -6,10 +6,10 @@
 #         self.right = right
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        def isSymmetric(p, q):
-              if not p or not q:
-                return p == q
+        def isSymmetric(r1, r2):
+              if not r1 or not r2:
+                return r1 == r2
 
-              return p.val == q.val and isSymmetric(p.left, q.right) and isSymmetric(p.right, q.left)
+              return r1.val == r2.val and isSymmetric(r1.left, r2.right) and isSymmetric(r1.right, r2.left)
 
         return isSymmetric(root, root)
