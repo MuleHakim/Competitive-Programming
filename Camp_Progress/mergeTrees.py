@@ -18,7 +18,7 @@ class Solution:
 
         return merge(root1,root2)
     
-# without using new binaty tree
+# without using new binary tree
 class Solution:
     def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
         def merge(r1,r2):
