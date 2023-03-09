@@ -8,8 +8,6 @@ class Solution:
                 return 
 
             for candidate in range(1, n + 1):
-                if candidate in set(self.cur):
-                    continue
                 if self.cur and candidate <= self.cur[-1]:
                     continue
                 self.cur.append(candidate)
