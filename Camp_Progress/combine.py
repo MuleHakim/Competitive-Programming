@@ -6,13 +6,14 @@ class Solution:
             if len(self.cur) == k:
                 self.ans.append(self.cur[:])
                 return 
-                
+
             for candidate in range(1, n + 1):
-                if candidate in self.cur:
+                if candidate in set(self.cur):
                     continue
                 if self.cur and candidate <= self.cur[-1]:
                     continue
                 self.cur.append(candidate)
+
                 backtrack(l+1)
                 self.cur.pop()
 
