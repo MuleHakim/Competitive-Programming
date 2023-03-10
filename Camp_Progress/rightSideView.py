@@ -28,7 +28,7 @@ class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if not root: return []
         
-        queue = [root]
+        queue = deque([root])
         ans = []
         
         while queue:
@@ -36,7 +36,7 @@ class Solution:
             length = len(queue)
 
             while length > 0:
-                cur = queue.pop(0)
+                cur = queue.popleft()
                 cur_level.append(cur.val)
                 length -= 1
 
