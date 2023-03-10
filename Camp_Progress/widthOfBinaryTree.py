@@ -22,9 +22,6 @@ class Solution:
                 if cur.right:
                     queue.append((cur.right,2*num+1))
                     
-            if len(cur_level) > 1:
-                levelOrder.append(max(cur_level)- min(cur_level) + 1)
-            else:
-                levelOrder.append(1)
+            levelOrder.append(cur_level[-1] - cur_level[0] + 1)
 
         return max(levelOrder)
