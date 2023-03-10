@@ -1,18 +1,20 @@
 class Solution:
     def distributeCookies(self, cookies: List[int], k: int) -> int:
+
         cookies = sorted(cookies,reverse=True)
-        
-        def backtrack(index, people):
+        children = [0 for _ in range(k)]
+
+        def backtrack(index):
             if index >= len(cookies):
-                return max(people)
+                return max(children)
 
-            fair = float("inf")
-            for idx, person in enumerate(people):
-                people[idx] += cookies[index]
-                if people[idx] < fair:
-                    fair = min(fair, backtrack(index + 1, people))
-                people[idx] -= cookies[index]
+            unfairness = float("inf")
+            for idx in range(len(children)):
+                children[idx] += cookies[index]
+                if children[idx] < unfairness:
+                    unfairness = min(unfairness, backtrack(index + 1))
+                children[idx] -= cookies[index]
 
-            return fair
+            return unfairness
 
-        return backtrack(0, [0 for _ in range(k)])
+        return backtrack(0)
