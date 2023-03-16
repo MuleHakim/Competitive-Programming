@@ -1,20 +1,13 @@
 class Solution:
     def splitString(self, s: str) -> bool:
-
-        def backtrack(s, prev):
-
-            if int(s) == prev - 1:
-                return True
-
-            for i in range(1, len(s)+1):
-                cur = int(s[:i])
-                if cur == prev - 1 and backtrack(s[i:], cur):
-                    return True
-                
-            return False
         
-        for i in range(1, len(s)):
-            if backtrack(s[i:], int(s[:i])):
-                return True
+        def dfs(idx, prev, split):
+            if idx >= len(s):
+                return split >= 2
+            for i in range(idx,len(s)):
+                cur = int(s[idx:i+1])
+                if (prev == "" or prev - cur == 1) and dfs(i+1, cur, split + 1):
+                    return True
+            return False
 
-        return False
+        return dfs(0,"",0)
