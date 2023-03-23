@@ -3,7 +3,7 @@ class Solution:
         def quickSort(low,high):
             while low < high:
                 mid = (low + high) // 2
-                pivot_idx = max(min(low, mid, high), min(max(low, mid), high), min(low, max(mid, high)))
+                pivot_idx = max(min(low,mid),min(max(low,mid),high))
                 nums[pivot_idx], nums[high] = nums[high], nums[pivot_idx]
                 pivot = nums[high]
 
