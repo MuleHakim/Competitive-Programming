@@ -11,6 +11,7 @@ class Solution:
     def getImportance(self, employees: List['Employee'], id: int) -> int:
         graph = defaultdict(list)
         value = defaultdict(int)
+        
         for employee in employees:
             graph[employee.id] = employee.subordinates
             value[employee.id] = employee.importance
