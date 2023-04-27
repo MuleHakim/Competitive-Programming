@@ -5,19 +5,16 @@ class Solution:
         graph = defaultdict(list)
         for key,room in enumerate(rooms):
             graph[key] = room
-        visited = set()
-        queue = deque()
-        def bfs(key):
-            visited.add(key)
-            queue.append(key)
-            while queue:
-                room = queue.popleft()
+        
+        visited = set([0])
+        queue = deque([0])
+        while queue:
+            room = queue.popleft()
+            for key in graph[room]:
+                if key not in visited:
+                    visited.add(key)
+                    queue.append(key)
 
-                for key in graph[room]:
-                    if key not in visited:
-                        visited.add(key)
-                        queue.append(key)
-        bfs(0)
         return True if len(visited)==len(rooms) else False
 
 # DFS
