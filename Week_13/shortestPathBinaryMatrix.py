@@ -4,7 +4,7 @@ class Solution:
             return 0 <= x < n and 0 <= y < n
             
         n = len(grid)
-        if grid[0][0] == 1 or grid[-1][-1] == 1: return -1
+        if grid[0][0] or grid[-1][-1]: return -1
         queue = deque([(0,0,1)])
         grid[0][0] = 1
         while queue:
@@ -14,7 +14,7 @@ class Solution:
             directions = [(row+1,col),(row-1,col),(row,col-1),(row,col+1),(row+1,col+1),\
                        (row+1,col-1),(row-1,col-1),(row-1,col+1)]
             for x,y in directions:
-                if inbound(x,y) and grid[x][y] == 0:
+                if inbound(x,y) and not grid[x][y]:
                     grid[x][y] = 1
                     queue.append((x,y,dist+1))
         return -1
