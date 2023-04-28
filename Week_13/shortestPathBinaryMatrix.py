@@ -11,8 +11,9 @@ class Solution:
             row,col,dist = queue.popleft()
             if row == col == n-1:
                 return dist
-            for x,y in ((row+1,col),(row-1,col),(row,col-1),(row,col+1),(row+1,col+1),\
-                       (row+1,col-1),(row-1,col-1),(row-1,col+1)):
+            directions = [(row+1,col),(row-1,col),(row,col-1),(row,col+1),(row+1,col+1),\
+                       (row+1,col-1),(row-1,col-1),(row-1,col+1)]
+            for x,y in directions:
                 if inbound(x,y) and grid[x][y] == 0:
                     grid[x][y] = 1
                     queue.append((x,y,dist+1))
