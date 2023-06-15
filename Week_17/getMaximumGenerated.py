@@ -11,3 +11,4 @@ class Solution:
                 dp[i] = dp[i // 2] + dp[(i // 2) + 1]
         
         return max(dp)
+    
